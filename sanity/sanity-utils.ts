@@ -1,10 +1,11 @@
 import { createClient, groq } from 'next-sanity';
 import { clientConfig } from './env';
-import { Page, SiteConfig } from '@/types';
+import { Page, SiteConfig, ProductType } from '@/types';
 
 export async function getSiteConfig(): Promise<SiteConfig> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "siteConfig"][0]{
+      
       ...,
       internalLinks[]->,
       primaryNavigation[] {
@@ -56,4 +57,37 @@ export async function getPage(slug: string): Promise<Page> {
     }`,
     { slug },
   );
+}
+
+export async function getProducts(): Promise<ProductType[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "product"]{
+      _id,
+      _createdAt,
+      name,
+      "slug": slug.current,
+      "image": image.asset->url,
+      price,
+      details,
+      category,
+    }`
+  )
+}
+
+export async function getProduct(slug: string): Promise<ProductType> {
+
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "product" && slug.current == $slug][0]{
+      _id,
+      _createdAt,
+      name,
+      "slug": slug.current,
+      "image": image.asset->url,
+      price,
+      details,
+      category,
+    }`,
+    { slug }
+  )
+
 }

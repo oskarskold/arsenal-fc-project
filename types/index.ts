@@ -27,6 +27,17 @@ export interface SiteConfig {
   logo?: ImageType;
 }
 
+export type ProductType = {
+  _id: string;
+  _createdAt: Date;
+  name: string;
+  slug: string;
+  price: number;
+  image: string;
+  details: string;
+  category: string;
+};
+
 export interface Page extends SanityDocument {
   title?: string;
   description?: string;

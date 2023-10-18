@@ -1,5 +1,26 @@
 import { groq } from 'next-sanity';
 
+
+export const productTypeQuery = groq`*[_type == "product" && slug.current == $slug][0]{
+  _id,
+  _createdAt,
+  name,
+  "slug": slug.current,
+  "image": image.asset->url,
+  price,
+  details,
+}`;
+
+export const productsTypesQuery = groq`*[_type == "product"]{
+  _id,
+  _createdAt,
+  name,
+  "slug": slug.current,
+  "image": image.asset->url,
+  price,
+  details,
+}`;
+
 export const homePageQuery = groq`*[_type == "homePage"][0] {
   ...,
   content[] {

@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 import Home from '@/components/Home';
+import Product from '@/components/Product';
+import ProductBanner from '@/components/ProductBanner';
+import HeroBanner from '@/components/HeroBanner';
 import PreviewProvider from '@/components/PreviewProvider';
 import { homePageQuery } from '@/sanity/lib/queries';
 import { getCachedClient } from '@/sanity/lib/getClient';
@@ -29,8 +32,13 @@ export default async function HomePage() {
       <PreviewProvider token={preview.token}>
         <HomePreview pageData={pageData} />
       </PreviewProvider>
+
     );
   }
 
-  return <Home pageData={pageData} />;
+  return <div><Home pageData={pageData} />
+  <HeroBanner />
+  <ProductBanner />
+  <Product />
+  </div>;
 }
