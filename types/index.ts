@@ -38,14 +38,6 @@ export type ProductType = {
   category: string;
 };
 
-export type PageType = {
-    _id: string,
-    _createdAt: Date,
-    title: string,
-    slug: string,
-    content: PortableTextBlock[],
-};
-
 export interface Page extends SanityDocument {
   title?: string;
   description?: string;
