@@ -59,9 +59,11 @@ export async function getPage(slug: string): Promise<Page> {
   );
 }
 
+let lastId = ''
+
 export async function getProducts(): Promise<ProductType[]> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "product"]{
+    groq`*[_type == "product" && _id > $lastId] | order(_id) [0...6]{
       _id,
       _createdAt,
       name,
@@ -70,12 +72,12 @@ export async function getProducts(): Promise<ProductType[]> {
       price,
       details,
       category,
-    }`
-  )
-}
+    }`,
+    { lastId }
+)}
+
 
 export async function getProduct(slug: string): Promise<ProductType> {
-
   return createClient(clientConfig).fetch(
     groq`*[_type == "product" && slug.current == $slug][0]{
       _id,
