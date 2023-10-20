@@ -1,6 +1,6 @@
 import { createClient, groq } from 'next-sanity';
 import { clientConfig } from './env';
-import { Page, SiteConfig, ProductType } from '@/types';
+import { Page, SiteConfig, ProductType, PageType } from '@/types';
 
 export async function getSiteConfig(): Promise<SiteConfig> {
   return createClient(clientConfig).fetch(
@@ -91,5 +91,28 @@ export async function getProduct(slug: string): Promise<ProductType> {
     }`,
     { slug }
   )
+}
 
+export async function getMyPages(): Promise<PageType[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "page"]{
+      _id,
+      _createdAt,
+      title,
+      "slug": slug.current
+    }`
+  )
+}
+
+export async function getMyPage(slug: string): Promise<PageType> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "page" && slug.current == $slug][0]{
+      _id,
+      _createdAt,
+      title,
+      "slug": slug.current,
+      content
+    }`,
+    { slug }
+  )
 }

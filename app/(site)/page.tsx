@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { draftMode } from 'next/headers';
-import Home from '@/components/Home';
 import Product from '@/components/Product';
 import ProductBanner from '@/components/ProductBanner';
 import HeroBanner from '@/components/HeroBanner';
@@ -36,7 +35,7 @@ export default async function HomePage() {
     );
   }
 
-  return <div><Home pageData={pageData} />
+  return <div>
   <HeroBanner />
   <ProductBanner />
   <Product />

@@ -1,44 +1,16 @@
-import { Metadata } from 'next';
-import { getPage } from '@/sanity/sanity-utils';
-import { draftMode } from 'next/headers';
-import { getCachedClient } from '@/sanity/lib/getClient';
-import { pageQuery } from '@/sanity/lib/queries';
-import PreviewProvider from '@/components/PreviewProvider';
-import PageTemplatePreview from '@/components/PageTemplatePreview';
-import PageTemplate from '@/components/PageTemplate';
-import { notFound } from 'next/dist/client/components/not-found';
+import { getMyPage } from "@/sanity/sanity-utils";
+import { PortableText } from "@portabletext/react";
 
 type Props = {
-  params: { slug: string };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const pageData = await getCachedClient(undefined)(pageQuery, params);
-
-  return {
-    title: pageData?.title,
-    description: pageData?.description,
-    openGraph: {
-      images: ['/some-specific-page-image.jpg'],
-    },
-  };
+  params: { slug: string }
 }
 
 export default async function Page({ params }: Props) {
-  const preview = draftMode().isEnabled
-    ? { token: process.env.SANITY_API_READ_TOKEN }
-    : undefined;
-  const pageData = await getCachedClient(preview)(pageQuery, params);
+  const page = await getMyPage(params.slug);
 
-  if (!pageData) return notFound();
-
-  if (preview && preview.token) {
-    return (
-      <PreviewProvider token={preview.token}>
-        <PageTemplatePreview pageData={pageData} />
-      </PreviewProvider>
-    );
-  }
-
-  return <PageTemplate pageData={pageData} />;
+  return (
+    <div><h1 className="text-black text-5xl drop-shadow font-extrabold">{page.title}</h1>
+      <div className="text-lg text-gray-700 mt-10"><PortableText value={page.content} /></div>
+    </div>
+  )
 }
