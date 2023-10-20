@@ -11,6 +11,13 @@ export interface ImageType {
   alt?: string;
 }
 
+export interface PaginationProps {
+  currentPage: number;
+  totalCount: number;
+  pageSize: number;
+  onPageChange: (selectedPage: number) => void;
+}
+
 export interface NavItem {
   title?: string;
   _key: string;
