@@ -43,6 +43,7 @@ export type ProductType = {
   image: string;
   details: string;
   category: string;
+  featured: boolean;
 };
 
 export interface Page extends SanityDocument {

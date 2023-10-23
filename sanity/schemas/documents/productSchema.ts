@@ -41,6 +41,12 @@ const product = {
         title: 'Category',
         type: 'string'
       },
+      {
+        name: 'featured',
+        title: 'Featured',
+        type: 'boolean'
+
+      }
     ]
   }
   export default product;

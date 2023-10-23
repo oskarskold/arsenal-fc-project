@@ -9,6 +9,7 @@ export const productTypeQuery = groq`*[_type == "product" && slug.current == $sl
   "image": image.asset->url,
   price,
   details,
+  featured,
 }`;
 
 export const productsTypesQuery = groq`*[_type == "product"]{
@@ -19,6 +20,7 @@ export const productsTypesQuery = groq`*[_type == "product"]{
   "image": image.asset->url,
   price,
   details,
+  featured,
 }`;
 
 export const homePageQuery = groq`*[_type == "homePage"][0] {
