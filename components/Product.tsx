@@ -31,6 +31,7 @@ const Product = () => {
   const currentProducts = products.slice(firstIndex, lastIndex);
 
   const featuredProducts = products.filter((product) => product.featured === true);
+  
 
   return (
     <>

@@ -8,7 +8,7 @@ const ProductBanner = () => {
       </div>
       <div className="flex flex-col p-8 items-center justify-center">
         <p className="text-sm md:text-md lg:text-lg font-bold text-red-800 tracking-tighter m-2">
-          Arsenal, Inc. is a team comprised of the Nike, Jordan and Converse brands
+          Arsenal, Inc. is a team comprised of the Adidas, brand
           driven by a shared purpose to leave an enduring impact
         </p>
         <p className="text-sm md:text-md lg:text-lg font-bold text-gray-800 tracking-tighter m-2">

@@ -13,7 +13,7 @@ const Footer = () => {
         <Link href="/" className="text-2xl font-bold m-2">
           PRODUCTS
         </Link>
-        <Link href="/" className="text-2xl font-bold m-2">
+        <Link href="/about-us" className="text-2xl font-bold m-2">
           ABOUT US
         </Link>
       </div>
