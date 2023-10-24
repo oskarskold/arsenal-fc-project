@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useEffect, useState } from 'react';
 import { getProducts } from '@/sanity/sanity-utils';
 import { ProductType } from '@/types';
@@ -31,7 +31,6 @@ const Product = () => {
   const currentProducts = products.slice(firstIndex, lastIndex);
 
   const featuredProducts = products.filter((product) => product.featured === true);
-  
 
   return (
     <>

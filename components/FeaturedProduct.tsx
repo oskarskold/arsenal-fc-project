@@ -2,17 +2,16 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ProductType } from '@/types';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import './FeaturedProduct.css'
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import './FeaturedProduct.css';
 
 interface FeaturedProductProps {
   featuredProducts: ProductType[];
 }
 
 const FeaturedProduct: React.FC<FeaturedProductProps> = ({ featuredProducts }) => {
-
   const settings = {
     dots: true,
     infinite: true,
@@ -27,37 +26,43 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ featuredProducts }) =
     <div className="md:flex flex-col items-center my-20 hidden ">
       <h1 className="text-4xl font-bold">Featured Products</h1>
       <div className="flex justify-center items-center mt-10">
-          <Slider {...settings}>
-            {featuredProducts.map((product) => (
-                <Link href={`/products/${product.slug}`} key={product._id} className="p-1 hover:scale-105 transition">
-              <div key={product._id} className="p-1 hover:scale-105 transition">
+        <Slider {...settings}>
+          {featuredProducts.map((product) => (
+            <Link
+              href={`/products/${product.slug}`}
+              key={product._id}
+              className="p-1 hover:scale-105 transition "
+            >
+              <div className="bg-white rounded-lg overflow-hidden shadow-md mx-4">
                 {product.image && (
                   <div className="px-4 flex justify-center">
-                    <div className="relative w-80 min-h-[20rem] shadow-md rounded-md overflow-hidden">
-                      <p className="absolute top-6 left-4 text-white bg-red-500 shadow-md py-2 px-4 z-10 rounded-md uppercase">
-                        {product.category}
-                      </p>
+                    <div className="relative w-80 min-h-[20rem] overflow-hidden">
                       <Image
                         src={product.image}
                         alt={product.name}
                         width={350}
                         height={300}
-                        className="absolute inset-0 w-full h-full object-fill rounded-md shadow-md"
+                        className="absolute inset-0 w-full h-full object-fill "
                       />
                     </div>
                   </div>
                 )}
-                <div className="flex justify-between items-start mt-5 px-10 py-2" key={product._id}>
-                  <div className="font-extrabold">
-                    {product.name}
-                    <div className="text-lg text-gray-700 mt-5">{product.details}</div>
+                <div className="p-4">
+                  <h2 className="text-xl font-bold text-gray-800">{product.name}</h2>
+                  <p className="text-gray-600 mt-2">{product.details}</p>
+                  <div className="flex justify-between items-center mt-4">
+                    <span className="text-lg font-bold text-gray-800">
+                      €{product.price}
+                    </span>
+                    <span className="inline-block bg-red-500 text-white text-sm px-3 py-1 rounded-md uppercase">
+                      {product.category}
+                    </span>
                   </div>
-                  <div className="text-lg text-gray-700">€{product.price}</div>
                 </div>
               </div>
             </Link>
-            ))}
-          </Slider>
+          ))}
+        </Slider>
       </div>
     </div>
   );
