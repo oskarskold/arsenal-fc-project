@@ -46,6 +46,11 @@ const product = {
         title: 'Featured',
         type: 'boolean'
 
+      },
+      {
+        name: 'quantity',
+        title: 'Quantity',
+        type: 'number'
       }
     ]
   }

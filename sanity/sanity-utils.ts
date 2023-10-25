@@ -73,6 +73,7 @@ export async function getProducts(): Promise<ProductType[]> {
       details,
       category,
       featured,
+      quantity,
     }`,
     { lastId }
 )}
@@ -90,6 +91,7 @@ export async function getProduct(slug: string): Promise<ProductType> {
       details,
       category,
       featured,
+      quantity,
     }`,
     { slug }
   )

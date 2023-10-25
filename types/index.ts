@@ -11,6 +11,20 @@ export interface ImageType {
   alt?: string;
 }
 
+export type ShoppingCartProviderProps = {
+  children: any;
+};
+export interface ShoppingCartContext {
+    getItemQuantity: (id: number) => number;
+    increaseItemQuantity: (id: number) => void;
+    decreaseQuantity: (id: number) => void;
+    removeFromCart: (id: number) => void;
+    addToCart: (item: ProductType) => void;
+    totalCartPrice: () => number;
+    cartQuantity: number;
+    cartItems: ProductType[];
+}
+
 export interface PaginationProps {
   currentPage: number;
   totalCount: number;
@@ -35,7 +49,7 @@ export interface SiteConfig {
 }
 
 export type ProductType = {
-  _id: string;
+  _id: number;
   _createdAt: Date;
   name: string;
   slug: string;
@@ -44,6 +58,7 @@ export type ProductType = {
   details: string;
   category: string;
   featured: boolean;
+  quantity: number;
 };
 
 export interface Page extends SanityDocument {

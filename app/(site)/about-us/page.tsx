@@ -4,7 +4,7 @@ import ProductBanner from '@/components/ProductBanner';
 
 const page = () => {
   return (
-    <div className="max-w-full max-h-screen mx-auto">
+    <div>
       <AboutUs />
       <ProductBanner />
     </div>

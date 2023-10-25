@@ -5,6 +5,7 @@ import { getCachedClient } from '@/sanity/lib/getClient';
 import { siteConfigQuery } from '@/sanity/lib/queries';
 import FooterProduct from '@/components/FooterProduct';
 import Navbar from '@/components/Navbar';
+import { ShoppingCartProvider } from '@/context/cartContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,9 +19,11 @@ export default async function Layout({ children }: { children: React.ReactNode }
 
   return (
     <>
+      <ShoppingCartProvider>
       <Navbar />
       {children}
       <FooterProduct />
+      </ShoppingCartProvider>
     </>
   );
 }
