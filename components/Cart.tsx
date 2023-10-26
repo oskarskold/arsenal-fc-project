@@ -1,5 +1,6 @@
 import { useShoppingCart } from '../context/cartContext';
 import Image from 'next/image';
+import getStripe from '../lib/getStripe';
 
 const Cart = () => {
   const { 
@@ -12,6 +13,26 @@ const Cart = () => {
     addToCart, 
     totalCartPrice 
   } = useShoppingCart();
+  
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+
+    const response = await fetch('/api/stripe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartItems),
+    });
+
+    if(response.status === 500) return;
+    
+    const data = await response.json();
+    console.log(data);
+
+    stripe.redirectToCheckout({ sessionId: data.id });
+  }
+
 
   return (
     <div className='mt-10'>
@@ -27,7 +48,7 @@ const Cart = () => {
               <div>
                 <p className="text-lg font-semibold">{item.name}</p>
                 <p className="text-gray-600">Quantity: {getItemQuantity(item._id)}</p>
-                <p className="text-gray-600">Price: €{item.price}</p>
+                <p className="text-gray-600">Price: ${item.price}</p>
               </div>
               <div className="flex items-center">
                 <button
@@ -53,8 +74,13 @@ const Cart = () => {
           ))}
           <div className="mt-6 flex justify-between">
             <p className="text-lg font-semibold">Total Items: {cartQuantity}</p>
-            <p className="text-lg font-semibold">Total Price: €{totalCartPrice()}</p>
+            <p className="text-lg font-semibold">Total Price: ${totalCartPrice()}</p>
           </div>
+          <div className="flex justify-center">
+              <button type="button" className="inline-block bg-green-500 text-white text-sm px-3 py-3 rounded-md uppercase hover:underline" onClick={handleCheckout}>
+                Pay with Stripe
+              </button>
+            </div>
         </div>
       )}
     </div>

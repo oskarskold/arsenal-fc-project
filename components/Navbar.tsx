@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between">
         <div>
           <Link href="/">
-            <p className="block text-black text-3xl text-center mx-8">Arsenal</p>
+            <p className="block text-black text-3xl text-center mx-8 hover:underline">Arsenal</p>
           </Link>
         </div>
         <div className="flex md:hidden">
@@ -37,10 +37,10 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex items-center">
           <Link href="/">
-            <p className="block text-black text-3xl text-center mx-8">Products</p>
+            <p className="block text-black text-3xl text-center mx-8 hover:underline">Products</p>
           </Link>
           <Link href="/about-us">
-            <p className="block text-black text-3xl text-center mx-8">About us</p>
+            <p className="block text-black text-3xl text-center mx-8 hover:underline">About us</p>
           </Link>
         </div>
         <div className="hidden">
@@ -64,10 +64,10 @@ const Navbar = () => {
       </div>
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} mt-2`}>
         <Link href="/">
-          <p className="block text-black text-3xl text-center my-8 py-2">Products</p>
+          <p className="block text-black text-3xl text-center my-8 py-2 hover:underline">Products</p>
         </Link>
         <Link href="/about-us">
-          <p className="block text-black text-3xl text-center my-4 py-2">About us</p>
+          <p className="block text-black text-3xl text-center my-4 py-2 hover:underline">About us</p>
         </Link>
       </div>
     </nav>

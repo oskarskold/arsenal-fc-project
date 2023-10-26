@@ -26,7 +26,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ featuredProducts }) =
   const { addToCart } = useShoppingCart();
 
   const handleAddToCart = (product: ProductType) => {
-    addToCart(product); // Call the addToCart function with the selected product
+    addToCart(product);
   };
 
   return (
@@ -55,7 +55,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ featuredProducts }) =
                 <h2 className="text-xl font-bold text-gray-800">{product.name}</h2>
                 <p className="text-gray-600 mt-2">{product.details}</p>
                 <div className="flex justify-between items-center mt-4">
-                  <span className="text-lg font-bold text-gray-800">€{product.price}</span>
+                  <span className="text-lg font-bold text-gray-800">${product.price}</span>
                   <span className="inline-block bg-gray-500 text-white text-sm px-3 py-1 rounded-md uppercase">
                     {product.category}
                   </span>
@@ -63,7 +63,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ featuredProducts }) =
                 <div className="flex justify-end mt-4">
                   <button
                     onClick={() => handleAddToCart(product)}
-                    className="inline-block bg-green-500 text-white text-sm px-3 py-1 rounded-md uppercase"
+                    className="inline-block bg-green-500 text-white text-sm px-3 py-1 rounded-md uppercase hover:underline"
                   >
                     Add to Cart
                   </button>

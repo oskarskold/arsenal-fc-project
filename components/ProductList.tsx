@@ -9,7 +9,7 @@ interface ProductListProps {
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
-  const { addToCart } = useShoppingCart(); // Destructure the addToCart function from the cart context
+  const { addToCart } = useShoppingCart();
   const [selectedCategory, setSelectedCategory] = useState<string>('');
 
   const handleCheckboxChange = (category: string) => {
@@ -25,7 +25,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
     : products;
 
   const handleAddToCart = (product: ProductType) => {
-    addToCart(product); // Call the addToCart function with the selected product
+    addToCart(product);
   };
 
   return (
@@ -83,15 +83,15 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                   <h2 className="text-xl font-bold text-gray-800">{product.name}</h2>
                   <p className="text-gray-600 mt-2">{product.details}</p>
                   <div className="flex justify-between items-center mt-4">
-                    <span className="text-lg font-bold text-gray-800">€{product.price}</span>
+                    <span className="text-lg font-bold text-gray-800">${product.price}</span>
                     <span className="inline-block bg-gray-500 text-white text-sm px-3 py-1 rounded-md uppercase">
                       {product.category}
                     </span>
                   </div>
                   <div className="flex justify-end mt-4">
                     <button
-                      onClick={() => handleAddToCart(product)} // Call handleAddToCart function on click
-                      className="inline-block bg-green-500 text-white text-sm px-3 py-1 rounded-md uppercase"
+                      onClick={() => handleAddToCart(product)}
+                      className="inline-block bg-green-500 text-white text-sm px-3 py-1 rounded-md uppercase hover:underline"
                     >
                       Add to Cart
                     </button>

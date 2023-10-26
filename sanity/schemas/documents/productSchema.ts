@@ -14,7 +14,12 @@ const product = {
       },
       {
         name: 'name',
-        title: 'Name',
+        title: 'title',
+        type: 'string'
+      },
+      {
+        name: 'subtitle',
+        title: 'Subtitle',
         type: 'string'
       },
       {
@@ -34,7 +39,7 @@ const product = {
       {
         name: 'details',
         title: 'Details',
-        type: 'string'
+        type: 'text'
       },
       {
         name: 'category',
