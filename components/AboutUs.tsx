@@ -13,7 +13,7 @@ const AboutUs = () => {
         Lorem Ipsum sans sin con ipsum. Lorem Ipsum sans sin con ipsum. Lorem Ipsum sans
         sin con ipsum. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias
         doloribus consequuntur labore similique quisquam dolore provident sint eligendi
-        aperiam voluptates!
+        aperiam voluptates! Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </p>
     </div>
   );
