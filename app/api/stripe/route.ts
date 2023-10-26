@@ -7,7 +7,7 @@ export const POST = async (req: NextRequest) => {
   if (req.method === 'POST') {
     try {
       const body = await req.json();
-      const lineItems = body.map((item: {
+      const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = body.map((item: {
         image: string;
         name: string;
         price: number;
