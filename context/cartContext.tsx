@@ -1,7 +1,7 @@
 'use client';
 import { createContext, useState, useContext } from 'react';
 import { ShoppingCartContext, ShoppingCartProviderProps, ProductType } from '../types';
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import  useLocalStorage from "../hooks/useLocalStorage";
 
 const ShoppingCartContext = createContext<ShoppingCartContext>({} as ShoppingCartContext);
 
