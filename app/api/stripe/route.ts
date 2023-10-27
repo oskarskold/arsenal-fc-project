@@ -1,6 +1,6 @@
+
 import { NextResponse, NextRequest } from 'next/server';
 import Stripe from 'stripe';
-
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY || '', {apiVersion: '2023-10-16'});
 
@@ -52,4 +52,5 @@ export const config = {
 }
     return NextResponse.json({ message: 'Method not allowed' }, { status: 405 });
 };
+
 

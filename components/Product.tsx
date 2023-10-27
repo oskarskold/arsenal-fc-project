@@ -5,7 +5,6 @@ import { ProductType } from '@/types';
 import Pagination from './Pagination';
 import ProductList from './ProductList';
 import FeaturedProduct from './FeaturedProduct';
-import Cart from './Cart';
 
 const PAGE_SIZE = 3; // Adjust the page size according to your requirement
 
@@ -43,7 +42,6 @@ const Product = () => {
         pageSize={PAGE_SIZE}
         onPageChange={(selectedPage) => setCurrentPage(selectedPage)}
       />
-      <Cart />
     </>
   );
 };

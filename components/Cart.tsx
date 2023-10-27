@@ -1,3 +1,4 @@
+'use client';
 import { useShoppingCart } from '../context/cartContext';
 import Image from 'next/image';
 import getStripe from '../lib/getStripe';
@@ -28,8 +29,6 @@ const Cart = () => {
     if(response.status === 500) return;
     
     const data = await response.json();
-    console.log(data);
-
     stripe.redirectToCheckout({ sessionId: data.id });
   }
 
