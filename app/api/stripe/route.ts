@@ -4,13 +4,9 @@ import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY || '', {apiVersion: '2023-10-16'});
 
-export const config = {
-  api: {
-    bodyParser: true,
-  },
-};
 
-export const POST = async (req: NextRequest) => {
+
+const POST = async (req: NextRequest) => {
   if (req.method === 'POST') {
     try {
       const body = await req.json();
@@ -56,3 +52,4 @@ export const POST = async (req: NextRequest) => {
 };
 
 
+export default POST
