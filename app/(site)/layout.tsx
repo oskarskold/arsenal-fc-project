@@ -6,6 +6,7 @@ import { siteConfigQuery } from '@/sanity/lib/queries';
 import FooterProduct from '@/components/FooterProduct';
 import Navbar from '@/components/Navbar';
 import { ShoppingCartProvider } from '@/context/cartContext';
+import Cart from '@/components/Cart';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,6 +23,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
       <ShoppingCartProvider>
       <Navbar />
       {children}
+      <Cart />
       <FooterProduct />
       </ShoppingCartProvider>
     </>
