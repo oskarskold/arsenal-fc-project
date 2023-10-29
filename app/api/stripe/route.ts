@@ -43,13 +43,13 @@ export const POST = async (req: NextRequest) => {
         success_url: `https://arsenal-fc-project-348a.vercel.app/success`,
         cancel_url: `https://arsenal-fc-project-348a.vercel.app/canceled`,
       };
-      console.log(params, "params")
-      const session = await stripe.checkout.sessions.create(params as Stripe.Checkout.SessionCreateParams);
-      console.log(session, "session")
+      const session = await stripe.checkout.sessions.create(params as any);
+      console.log(params, "paramsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparams")
+      console.log(session, "sessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsession")
 
       return NextResponse.json(session, { status: 200 });
     } catch (err) {
-      return NextResponse.json({ status: 500 });
+      return NextResponse.json({ message: err }, { status: 500 });
     }
   }
   return NextResponse.json({ message: 'Method not allowed' }, { status: 405 });
