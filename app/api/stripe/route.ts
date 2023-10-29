@@ -16,6 +16,7 @@ export const POST = async (req: NextRequest) => {
   if (req.method === 'POST') {
     try {
       const body = await req.json();
+      console.log(body)
       const params = {
         payment_method_types: ['card'],
         line_items: body.map((item: Item) => {
@@ -37,11 +38,16 @@ export const POST = async (req: NextRequest) => {
             quantity: item.quantity,
           };
         }),
+
         mode: 'payment',
         success_url: `http://localhost:3000/success`,
         cancel_url: `http://localhost:3000/canceled`,
       };
+      console.log(params)
       const session = await stripe.checkout.sessions.create(params as Stripe.Checkout.SessionCreateParams);
+      console.log(session)
+      console.log(params)
+
       return NextResponse.json(session, { status: 200 });
     } catch (err) {
       return NextResponse.json({ status: 500 });
