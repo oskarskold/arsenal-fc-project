@@ -40,8 +40,8 @@ export const POST = async (req: NextRequest) => {
         }),
 
         mode: 'payment',
-        success_url: `https://arsenal-fc-project-348a.vercel.app//success`,
-        cancel_url: `https://arsenal-fc-project-348a.vercel.app//canceled`,
+        success_url: `https://arsenal-fc-project-348a.vercel.app/success`,
+        cancel_url: `https://arsenal-fc-project-348a.vercel.app/canceled`,
       };
       console.log(params, "params")
       const session = await stripe.checkout.sessions.create(params as Stripe.Checkout.SessionCreateParams);
