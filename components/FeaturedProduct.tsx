@@ -35,11 +35,18 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ featuredProducts }) =
       <div className="flex justify-center items-center mt-10">
         <Slider {...settings}>
           {featuredProducts.map((product) => (
-            <div key={product._id} className="bg-white rounded-lg overflow-hidden shadow-md mx-4">
+            <div
+              key={product._id}
+              className="bg-white rounded-lg overflow-hidden shadow-md mx-4"
+            >
               {product.image && (
                 <div className="px-4 flex justify-center">
                   <div className="relative w-80 min-h-[20rem] overflow-hidden">
-                    <Link href={`/products/${product.slug}`} key={product._id} className="p-1 hover:scale-105 transition">
+                    <Link
+                      href={`/products/${product.slug}`}
+                      key={product._id}
+                      className="p-1 hover:scale-105 transition"
+                    >
                       <Image
                         src={product.image}
                         alt={product.name}
@@ -55,7 +62,9 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ featuredProducts }) =
                 <h2 className="text-xl font-bold text-gray-800">{product.name}</h2>
                 <p className="text-gray-600 mt-2">{product.details}</p>
                 <div className="flex justify-between items-center mt-4">
-                  <span className="text-lg font-bold text-gray-800">${product.price}</span>
+                  <span className="text-lg font-bold text-gray-800">
+                    ${product.price}
+                  </span>
                   <span className="inline-block bg-gray-500 text-white text-sm px-3 py-1 rounded-md uppercase">
                     {product.category}
                   </span>

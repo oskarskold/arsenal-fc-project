@@ -3,10 +3,10 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { getCachedClient } from '@/sanity/lib/getClient';
 import { siteConfigQuery } from '@/sanity/lib/queries';
-import FooterProduct from '@/components/FooterProduct';
-import Navbar from '@/components/Navbar';
 import { ShoppingCartProvider } from '@/context/cartContext';
 import Cart from '@/components/Cart';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,10 +21,10 @@ export default async function Layout({ children }: { children: React.ReactNode }
   return (
     <>
       <ShoppingCartProvider>
-      <Navbar />
-      {children}
-      <Cart />
-      <FooterProduct />
+        <Header config={config} />
+        {children}
+        <Cart />
+        <Footer config={config} />
       </ShoppingCartProvider>
     </>
   );

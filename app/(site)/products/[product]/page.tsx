@@ -1,10 +1,10 @@
 'use client';
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { ProductType } from "@/types";
-import { useShoppingCart } from "@/context/cartContext";
-import { getProduct } from "../../../../sanity/sanity-utils";
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ProductType } from '@/types';
+import { useShoppingCart } from '@/context/cartContext';
+import { getProduct } from '../../../../sanity/sanity-utils';
 
 type ProductProps = {
   params: {
@@ -14,7 +14,16 @@ type ProductProps = {
 
 const Product: React.FC<ProductProps> = ({ params }) => {
   const [product, setProduct] = useState<ProductType | null>(null);
-  const { addToCart } = useShoppingCart();
+  const {
+    cartItems,
+    cartQuantity,
+    getItemQuantity,
+    increaseItemQuantity,
+    decreaseQuantity,
+    removeFromCart,
+    addToCart,
+    totalCartPrice,
+  } = useShoppingCart();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -25,39 +34,57 @@ const Product: React.FC<ProductProps> = ({ params }) => {
     fetchProduct();
   }, [params.product]);
 
-  const handleAddToCart = (product: ProductType) => {
-    addToCart(product);
-  };
-
   if (!product) {
     return <div>Loading...</div>; // or any loading indicator you prefer
   }
 
   return (
-    <div className="max-w-full max-h-screen mx-auto">
-      <div className="flex flex-col items-center p-8">
-        <div className="max-w-md rounded overflow-hidden shadow-lg">
-          <Image src={product.image} alt={product.name} width={350} height={300} />
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">{product.name}</div>
-            <p className="text-gray-700 text-base">{product.details}</p>
+    <div className="container mx-auto px-20 py-8">
+      <div className="flex flex-col md:flex-row items-center">
+        <div className="sm:w-1/2 md:w-1/3 ">
+          <Image src={product.image} alt={product.name} width={450} height={300} />
+        </div>
+        <div className="flex flex-col md:w-1/2 md:pl-8 mt-4 md:mt-0">
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 uppercase">
+            {product.name}
+          </h2>
+          <p className="text-gray-700 text-base md:text-lg mb-4">{product.details}</p>
+
+          <div className="flex items-center">
+            <span className="text-gray-700 text-base md:text-lg">Price:</span>
+            <span className="text-red-600 font-bold text-base md:text-lg">{`$${product.price.toFixed(
+              2,
+            )}`}</span>
           </div>
-          <div className="px-6 pt-4 pb-2 flex justify-between items-center">
-            <span className="text-gray-700 text-lg">Price:</span>
-            <span className="text-red-600 font-bold text-lg">{`$${product.price.toFixed(2)}`}</span>
+          <div>
+            <p className="text-lg font-semibold">{product.name}</p>
           </div>
-          <div className="px-6 pt-4 pb-2 flex justify-end items-center">
+          <div className="flex items-center">
+            <p className="text-gray-600 mr-4">Quantity: {getItemQuantity(product._id)}</p>
+            <button
+              onClick={() => increaseItemQuantity(product._id)}
+              className="bg-green-500 hover:bg-green-600 text-white rounded mr-2 w-8 min-w-0 sm:min-w-full md:min-w-0 lg:min-w-full xl:min-w-0"
+            >
+              <span className="text-lg font-bold">+</span>
+            </button>
+            <button
+              onClick={() => decreaseQuantity(product._id)}
+              className="bg-red-500 hover:bg-red-600 text-white rounded mr-2 w-8 min-w-0 sm:min-w-full md:min-w-0 lg:min-w-full xl:min-w-0"
+            >
+              <span className="text-lg font-bold">-</span>
+            </button>
+          </div>
+
           <button
-            onClick={() => handleAddToCart(product)}
-            className="inline-block bg-green-500 text-white text-sm px-3 py-1 mb-3 rounded-md uppercase hover:underline"
+            onClick={() => addToCart(product)}
+            className="mt-6 md:mt-14 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 md:mr-28 rounded"
           >
             Add to Cart
           </button>
-          </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Product;

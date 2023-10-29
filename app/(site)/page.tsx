@@ -31,13 +31,14 @@ export default async function HomePage() {
       <PreviewProvider token={preview.token}>
         <HomePreview pageData={pageData} />
       </PreviewProvider>
-
     );
   }
 
-  return <div>
-  <HeroBanner />
-  <ProductBanner />
-  <Product />
-  </div>;
+  return (
+    <div>
+      <HeroBanner />
+      <ProductBanner />
+      <Product />
+    </div>
+  );
 }
