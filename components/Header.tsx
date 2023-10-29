@@ -20,7 +20,7 @@ const Header = ({ config }: HeaderProps) => {
 
   return (
     <>
-      <nav className="p-8 mt-4 sticky top-0 z-50 bg-white">
+      <nav className="p-8 sticky top-0 z-50 bg-white opacity-80">
         <div className="flex items-center justify-between">
           <div>
             <div className="block text-black text-3xl text-center mx-8 hover:underline">
