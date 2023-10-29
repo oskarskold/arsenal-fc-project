@@ -17,12 +17,18 @@ const Footer = ({ config }: FooterProps) => {
       <div className="flex items-center justify-between mt-4 ml-12">
         {config?.primaryNavigation?.map((item) => (
           <div
-            key={item._key}
+            key={item?._key}
             className="block text-black text-xl text-center mr-4 hover:underline"
           >
-            {item.route?.accessibleSlug?.current && (
-              <Link key={item._key} href={item.route.accessibleSlug.current}>
-                {item.title}
+            {item?.route?.accessibleSlug?.current && (
+              <Link
+                href={`${
+                  item?.route?.accessibleSlug?.current
+                    ? `/${item?.route?.accessibleSlug?.current}`
+                    : ''
+                }`}
+              >
+                {item?.title}
               </Link>
             )}
           </div>
