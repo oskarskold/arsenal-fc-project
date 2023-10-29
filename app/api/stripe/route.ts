@@ -44,8 +44,7 @@ export const POST = async (req: NextRequest) => {
         cancel_url: `https://arsenal-fc-project-348a.vercel.app/canceled`,
       };
       const session = await stripe.checkout.sessions.create(params as any);
-      console.log(params, "paramsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparamsparams")
-      console.log(session, "sessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsessionsession")
+
 
       return NextResponse.json(session, { status: 200 });
     } catch (err) {
