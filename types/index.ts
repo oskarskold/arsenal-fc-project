@@ -36,7 +36,7 @@ export interface NavItem {
   title?: string;
   _key: string;
   route?: {
-    slug: {
+    accessibleSlug: {
       current: string;
     };
   };
