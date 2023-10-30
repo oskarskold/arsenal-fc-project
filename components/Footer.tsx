@@ -14,7 +14,7 @@ const Footer = ({ config }: FooterProps) => {
           {config?.footerText}
         </Link>
       </div>
-      <div className="flex items-center justify-between mt-4 ml-12">
+      <div className="flex items-center justify-between mt-5 ml-12">
         {config?.primaryNavigation?.map((item) => (
           <div
             key={item._key}
