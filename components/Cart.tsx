@@ -35,22 +35,22 @@ const Cart = () => {
   return (
     <div className="mt-10">
       <h2 className="text-3xl font-bold mb-4 text-center">Shopping Cart</h2>
-      <div className="p-4 bg-white flex justify-center">
+      <div className="p-4 bg-white flex flex-col items-center">
         {cartItems.length === 0 ? (
           <p className="text-center">Your cart is empty.</p>
         ) : (
-          <div>
+          <div className="w-full sm:w-auto">
             {cartItems.map((item) => (
               <div
                 key={item._id}
-                className="flex items-center justify-between mb-4 p-4 border-b border-gray-300"
+                className="flex flex-col sm:flex-row items-center justify-between mb-4 p-4 border-b border-gray-300"
               >
                 <Image
                   src={item.image}
                   alt={item.name}
                   width={100}
                   height={100}
-                  className="mr-4"
+                  className="mb-4 sm:mb-0 sm:mr-4"
                 />
                 <div className="m-4">
                   <p className="text-lg font-semibold">{item.name}</p>
@@ -60,28 +60,32 @@ const Cart = () => {
                 <div className="flex items-center">
                   <button
                     onClick={() => increaseItemQuantity(item._id)}
-                    className="bg-green-500 hover:bg-green-600 text-white rounded mr-2 w-8 min-w-0 sm:min-w-full md:min-w-0 lg:min-w-full xl:min-w-0"
+                    className="bg-green-500 hover:bg-green-600 text-white rounded mr-2 px-3 py-1 md:px-4 md:py-1 lg:px-4 lg:py-1"
                   >
                     <span className="text-lg font-bold">+</span>
                   </button>
                   <button
                     onClick={() => decreaseQuantity(item._id)}
-                    className="bg-red-500 hover:bg-red-600 text-white  rounded mr-2  w-8 min-w-0 sm:min-w-full md:min-w-0 lg:min-w-full xl:min-w-0"
+                    className="bg-red-500 hover:bg-red-600 text-white rounded mr-2 px-3 py-1 md:px-4 md:py-1 lg:px-4 lg:py-1"
                   >
                     <span className="text-lg font-bold">-</span>
                   </button>
                   <button
                     onClick={() => removeFromCart(item._id)}
-                    className="bg-gray-500 hover:bg-gray-600 text-white py-1 px-3 rounded"
+                    className="bg-gray-500 hover:bg-gray-600 text-white py-1 px-3 rounded md:py-1 md:px-4 lg:py-1 lg:px-4"
                   >
                     <span className="text-lg font-bold">Remove</span>
                   </button>
                 </div>
               </div>
             ))}
-            <div className="mt-6 flex justify-between">
-              <p className="text-lg font-semibold">Total Items: {cartQuantity}</p>
-              <p className="text-lg font-semibold">Total Price: ${totalCartPrice()}</p>
+            <div className="mt-6 flex flex-col sm:flex-row justify-between">
+              <p className="text-md md:text-lg font-semibold">
+                Total Items: {cartQuantity}
+              </p>
+              <p className="text-md md:text-lg font-semibold mt-4 sm:mt-0">
+                Total Price: ${totalCartPrice()}
+              </p>
             </div>
             <div className="flex justify-center">
               <button
