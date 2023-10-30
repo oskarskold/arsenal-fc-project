@@ -36,13 +36,13 @@ export interface NavItem {
   title?: string;
   _key: string;
   route?: {
-    accessibleSlug: {
+    slug: {
       current: string;
     };
   };
 }
 
-export interface SiteConfig {
+export interface SiteConfig extends SanityDocument {
   footerText?: string;
   primaryNavigation?: NavItem[];
   logo?: ImageType;
