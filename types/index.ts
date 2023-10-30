@@ -44,7 +44,7 @@ export interface NavItem {
   };
 }
 
-export interface SiteConfig {
+export interface SiteConfig extends SanityDocument {
   footerText?: string;
   primaryNavigation?: NavItem[];
   logo?: ImageType;

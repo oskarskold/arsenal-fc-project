@@ -48,7 +48,7 @@ const Product: React.FC<ProductProps> = ({ params }) => {
           <h2 className="text-3xl md:text-4xl font-bold mb-2 uppercase">
             {product.name}
           </h2>
-          <p className="text-gray-700 text-base md:text-lg mb-4">{product.details}</p>
+          <p className="text-gray-700 text-base md:text-lg mb-5">{product.details}</p>
 
           <div className="flex items-center">
             <span className="text-gray-700 text-base md:text-lg">Price:</span>
@@ -56,22 +56,26 @@ const Product: React.FC<ProductProps> = ({ params }) => {
               2,
             )}`}</span>
           </div>
-          <div>
-            <p className="text-lg font-semibold">{product.name}</p>
-          </div>
           <div className="flex items-center">
-            <p className="text-gray-600 mr-4">Quantity: {getItemQuantity(product._id)}</p>
+          <p className="text-gray-600 mr-4">Quantity: {getItemQuantity(product._id)}</p>
+
             <button
               onClick={() => increaseItemQuantity(product._id)}
-              className="bg-green-500 hover:bg-green-600 text-white rounded mr-2 w-8 min-w-0 sm:min-w-full md:min-w-0 lg:min-w-full xl:min-w-0"
+              className="bg-green-500 hover:bg-green-600 text-white rounded mr-2 px-3 py-1 md:px-4 md:py-1 lg:px-4 lg:py-1"
             >
               <span className="text-lg font-bold">+</span>
             </button>
             <button
               onClick={() => decreaseQuantity(product._id)}
-              className="bg-red-500 hover:bg-red-600 text-white rounded mr-2 w-8 min-w-0 sm:min-w-full md:min-w-0 lg:min-w-full xl:min-w-0"
+              className="bg-red-500 hover:bg-red-600 text-white rounded mr-2 px-3 py-1 md:px-4 md:py-1 lg:px-4 lg:py-1"
             >
               <span className="text-lg font-bold">-</span>
+            </button>
+            <button
+              onClick={() => removeFromCart(product._id)}
+              className="bg-gray-500 hover:bg-gray-600 text-white py-1 px-3 rounded md:py-1 md:px-4 lg:py-1 lg:px-4"
+            >
+              <span className="text-lg font-bold">Remove</span>
             </button>
           </div>
 
