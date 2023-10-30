@@ -48,7 +48,7 @@ const Product: React.FC<ProductProps> = ({ params }) => {
           <h2 className="text-3xl md:text-4xl font-bold mb-2 uppercase">
             {product.name}
           </h2>
-          <p className="text-gray-700 text-base md:text-lg mb-4">{product.details}</p>
+          <p className="text-gray-700 text-base md:text-lg mb-5">{product.details}</p>
 
           <div className="flex items-center">
             <span className="text-gray-700 text-base md:text-lg">Price:</span>
