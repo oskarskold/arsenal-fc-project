@@ -15,14 +15,16 @@ export type ShoppingCartProviderProps = {
   children: any;
 };
 export interface ShoppingCartContext {
-    getItemQuantity: (id: number) => number;
-    increaseItemQuantity: (id: number) => void;
-    decreaseQuantity: (id: number) => void;
-    removeFromCart: (id: number) => void;
-    addToCart: (item: ProductType) => void;
-    totalCartPrice: () => number;
-    cartQuantity: number;
-    cartItems: ProductType[];
+  getItemQuantity: (id: number) => number;
+  increaseItemQuantity: (id: number) => void;
+  decreaseQuantity: (id: number) => void;
+  removeFromCart: (id: number) => void;
+  addToCart: (item: ProductType) => void;
+  totalCartPrice: () => number;
+  cartQuantity: number;
+  cartItems: ProductType[];
+  toggleCart: () => void;
+  isCartOpen: boolean;
 }
 
 export interface PaginationProps {

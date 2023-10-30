@@ -2,6 +2,7 @@
 import { createContext, useState, useContext } from 'react';
 import { ShoppingCartContext, ShoppingCartProviderProps, ProductType } from '../types';
 import useLocalStorage from '../hooks/useLocalStorage';
+import Modal from '../components/AddProductModal';
 
 const ShoppingCartContext = createContext<ShoppingCartContext>({} as ShoppingCartContext);
 
@@ -11,6 +12,9 @@ export function useShoppingCart() {
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [cartItems, setCartItems] = useLocalStorage<ProductType[]>('shoppingCart', []);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [addedProduct, setAddedProduct] = useState<ProductType | null>(null);
 
   const cartQuantity = cartItems.reduce((quantity, item) => quantity + item.quantity, 0);
 
@@ -37,6 +41,11 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     } else {
       setCartItems([...cartItems, { ...product, quantity: 1 }]);
     }
+
+    // Open the cart and set the modal
+    setIsCartOpen(true);
+    setShowModal(true);
+    setAddedProduct(product);
   }
 
   function increaseItemQuantity(id: number) {
@@ -64,6 +73,10 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     setCartItems(cartItems.filter((item) => item._id !== id));
   }
 
+  function toggleCart() {
+    setIsCartOpen(!isCartOpen);
+  }
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -75,9 +88,14 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         cartItems,
         addToCart,
         totalCartPrice,
+        isCartOpen,
+        toggleCart,
       }}
     >
       {children}
+      {showModal && addedProduct && (
+        <Modal product={addedProduct} onClose={() => setShowModal(false)} />
+      )}
     </ShoppingCartContext.Provider>
   );
 }

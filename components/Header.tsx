@@ -12,7 +12,7 @@ type HeaderProps = {
 };
 const Header = ({ config }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { cartQuantity } = useShoppingCart();
+  const { cartQuantity, isCartOpen, toggleCart } = useShoppingCart();
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
@@ -20,7 +20,7 @@ const Header = ({ config }: HeaderProps) => {
 
   return (
     <>
-      <nav className="p-8 sticky top-0 z-50 bg-white opacity-80">
+      <nav className="p-8 sticky top-0 z-20 bg-white">
         <div className="flex items-center justify-between">
           <div>
             <div className="block text-black text-3xl text-center mx-8 hover:underline">
@@ -47,16 +47,17 @@ const Header = ({ config }: HeaderProps) => {
             ))}
           </div>
           <div className="flex items-center">
-            <Link href="/">
-              <div className="relative">
-                <FaShoppingCart className="h-10 w-10 cursor-pointer text-black" />
-                {cartQuantity > 0 && (
-                  <span className="absolute -top-3 -right-3 bg-gray-500 text-white rounded-full w-7 h-7 flex items-center justify-center text-s">
-                    {cartQuantity}
-                  </span>
-                )}
-              </div>
-            </Link>
+            <div className="relative">
+              <FaShoppingCart
+                className="h-10 w-10 cursor-pointer text-black"
+                onClick={toggleCart}
+              />
+              {cartQuantity > 0 && (
+                <span className="absolute -top-3 -right-3 bg-gray-500 text-white rounded-full w-7 h-7 flex items-center justify-center text-s">
+                  {cartQuantity}
+                </span>
+              )}
+            </div>
           </div>
 
           <div className="flex md:hidden">
