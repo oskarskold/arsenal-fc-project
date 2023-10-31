@@ -40,7 +40,7 @@ const Cart = () => {
       <div className="flex">
         {isCartOpen && (
           <div
-            className="fixed top-0 right-0 h-screen w-5/5 bg-white shadow-lg p-4 sm:w-5/5 md:w-3/5 lg:w-3/5 xl:w-2/6 overflow-y-auto z-50 "
+            className="fixed top-0 right-0 h-screen w-5/5 bg-white shadow-lg p-4 sm:w-5/5 md:w-3/5 lg:w-3/5 xl:w-4/12 overflow-y-auto z-50 "
             style={{ scrollBehavior: 'smooth' }}
           >
             <div className="flex justify-between items-center m-4">

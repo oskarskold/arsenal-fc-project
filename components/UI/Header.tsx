@@ -87,7 +87,7 @@ const Header = ({ config }: HeaderProps) => {
             >
               {item.route?.accessibleSlug?.current && (
                 <Link href={item.route.accessibleSlug.current}>{item.title}</Link>
-              )}
+                )}
             </div>
           ))}
         </div>
