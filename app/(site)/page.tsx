@@ -4,7 +4,9 @@ import PreviewProvider from '@/components/Templates/PreviewProvider';
 import { homePageQuery } from '@/sanity/lib/queries';
 import { getCachedClient } from '@/sanity/lib/getClient';
 import HomePreview from '@/components/Home/HomePreview';
-import ProductsPage from './products/page';
+import Home from '@/components/Home/Home';
+import HeroBanner from '@/components/UI/HeroBanner';
+import ProductBanner from '@/components/UI/ProductBanner';
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageData = await getCachedClient(undefined)(homePageQuery);
@@ -20,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function HomePage() {
   const preview = draftMode().isEnabled
-    ? { token: process.env.SANITY_API_READ_TOKEN }
+    ? { token: process.env.NEXT_PUBLIC_SANITY_API_READ_TOKEN }
     : undefined;
   const pageData = await getCachedClient(preview)(homePageQuery);
 
@@ -34,7 +36,9 @@ export default async function HomePage() {
 
   return (
     <div>
-     <ProductsPage />
+     <HeroBanner />
+      <ProductBanner />
+     <Home pageData={pageData}/>
     </div>
   );
 }

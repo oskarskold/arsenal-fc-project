@@ -9,7 +9,7 @@ type Props = {
   pageData: Page | undefined;
 };
 
-const AboutPreview = ({ pageData }: Props) => {
+const ProductPreview = ({ pageData }: Props) => {
   const [data] = useLiveQuery(pageData, productPageQuery);
 
   return (
@@ -22,4 +22,4 @@ const AboutPreview = ({ pageData }: Props) => {
   );
 };
 
-export default AboutPreview;
+export default ProductPreview;

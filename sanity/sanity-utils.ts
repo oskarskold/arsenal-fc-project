@@ -40,6 +40,39 @@ export async function getHomePage(): Promise<Page> {
     }`,
   );
 }
+export async function getProductPage(): Promise<Page> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "productPage"][0] {
+      ...,
+      content[] {
+        ...,
+        cta {
+          ...,
+          route-> {
+            accessibleSlug
+          }
+        }
+      }
+    }`,
+  );
+}
+
+export async function getAboutPage(): Promise<Page> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "aboutPage"][0] {
+      ...,
+      content[] {
+        ...,
+        cta {
+          ...,
+          route-> {
+            accessibleSlug
+          }
+        }
+      }
+    }`,
+  );
+}
 
 export async function getPage(slug: string): Promise<Page> {
   return createClient(clientConfig).fetch(

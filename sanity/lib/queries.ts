@@ -38,7 +38,7 @@ export const homePageQuery = groq`*[_type == "homePage"][0] {
   }
 }`;
 
-export const aboutPageQuery = groq`*[_type == "homePage"][0] {
+export const aboutPageQuery = groq`*[_type == "aboutPage"][0] {
   ...,
   content[] {
     ...,
@@ -51,7 +51,7 @@ export const aboutPageQuery = groq`*[_type == "homePage"][0] {
   }
 }`;
 
-export const productPageQuery = groq`*[_type == "homePage"][0] {
+export const productPageQuery = groq`*[_type == "productPage"][0] {
   ...,
   content[] {
     ...,
