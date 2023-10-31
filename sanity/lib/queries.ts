@@ -38,6 +38,32 @@ export const homePageQuery = groq`*[_type == "homePage"][0] {
   }
 }`;
 
+export const aboutPageQuery = groq`*[_type == "homePage"][0] {
+  ...,
+  content[] {
+    ...,
+    cta {
+      ...,
+      route-> {
+        accessibleSlug
+      }
+    }
+  }
+}`;
+
+export const productPageQuery = groq`*[_type == "homePage"][0] {
+  ...,
+  content[] {
+    ...,
+    cta {
+      ...,
+      route-> {
+        accessibleSlug
+      }
+    }
+  }
+}`;
+
 export const pageQuery = groq`*[_type == "sitePage" && accessibleSlug.current == $slug][0]{
   ...,
   content[] {

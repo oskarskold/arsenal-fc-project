@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ProductType } from '@/types';
-import { useShoppingCart } from '../context/cartContext';
+import { useShoppingCart } from '../../context/cartContext';
 
 interface ProductListProps {
   products: ProductType[];

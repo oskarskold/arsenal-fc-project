@@ -5,8 +5,8 @@ import { getCachedClient } from '@/sanity/lib/getClient';
 import { siteConfigQuery } from '@/sanity/lib/queries';
 import { ShoppingCartProvider } from '@/context/cartContext';
 import Cart from '@/components/Cart';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Header from '@/components/UI/Header';
+import Footer from '@/components/UI/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const config = await getCachedClient(undefined)(siteConfigQuery);
+  console.log(config);
 
   return (
     <>

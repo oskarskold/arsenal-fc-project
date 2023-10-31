@@ -2,7 +2,7 @@
 import { createContext, useState, useContext } from 'react';
 import { ShoppingCartContext, ShoppingCartProviderProps, ProductType } from '../types';
 import useLocalStorage from '../hooks/useLocalStorage';
-import Modal from '../components/AddProductModal';
+import Modal from '../components/Product/AddProductModal';
 
 const ShoppingCartContext = createContext<ShoppingCartContext>({} as ShoppingCartContext);
 

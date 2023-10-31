@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { getProducts } from '@/sanity/sanity-utils';
 import { ProductType } from '@/types';
-import Pagination from './Pagination';
+import Pagination from '../UI/Pagination';
 import ProductList from './ProductList';
 import FeaturedProduct from './FeaturedProduct';
 

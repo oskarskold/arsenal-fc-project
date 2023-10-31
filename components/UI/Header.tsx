@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { SiteConfig } from '@/types';
-import SanityImage from '@/components/SanityImage';
+import SanityImage from '@/components/Templates/SanityImage';
 import React, { useState } from 'react';
-import { useShoppingCart } from '../context/cartContext';
+import { useShoppingCart } from '../../context/cartContext';
 import { FaShoppingCart } from 'react-icons/fa';
 
 type HeaderProps = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductType } from '../types';
+import { ProductType } from '../../types';
 
 interface ModalProps {
   product: ProductType;

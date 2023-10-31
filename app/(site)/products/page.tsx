@@ -1,7 +1,7 @@
 import React from 'react';
-import HeroBanner from '@/components/HeroBanner';
-import ProductBanner from '@/components/ProductBanner';
-import Product from '@/components/Product';
+import HeroBanner from '@/components/UI/HeroBanner';
+import ProductBanner from '@/components/UI/ProductBanner';
+import Product from '@/components/Product/Product';
 
 const ProductsPage = () => {
   return (
