@@ -2,13 +2,18 @@
 import React, { useEffect, useState } from 'react';
 import { getProducts } from '@/sanity/sanity-utils';
 import { ProductType } from '@/types';
+import { Page } from '@/types';
 import Pagination from '../UI/Pagination';
 import ProductList from './ProductList';
 import FeaturedProduct from './FeaturedProduct';
 
+type Props = {
+  pageData: Page | undefined;
+};
+
 const PAGE_SIZE = 3; // Adjust the page size according to your requirement
 
-const Product = () => {
+const Product = ({ pageData }: Props) => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
 

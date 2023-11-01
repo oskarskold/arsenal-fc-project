@@ -31,6 +31,8 @@ export default async function ProductPage() {
   if (preview && preview.token) {
     return (
       <PreviewProvider token={preview.token}>
+        <HeroBanner />
+      <ProductBanner />
         <ProductPreview pageData={pageData} />
       </PreviewProvider>
     );
@@ -40,7 +42,7 @@ export default async function ProductPage() {
     <div>
      <HeroBanner />
       <ProductBanner />
-      <Product />
+      <Product pageData={pageData}/>
     </div>
   );
 }

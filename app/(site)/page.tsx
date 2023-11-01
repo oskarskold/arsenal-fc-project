@@ -29,6 +29,8 @@ export default async function HomePage() {
   if (preview && preview.token) {
     return (
       <PreviewProvider token={preview.token}>
+        <HeroBanner />
+      <ProductBanner />
         <HomePreview pageData={pageData} />
       </PreviewProvider>
     );

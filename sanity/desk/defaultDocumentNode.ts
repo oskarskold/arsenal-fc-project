@@ -2,23 +2,22 @@ import { DefaultDocumentNodeResolver, StructureBuilder, ViewBuilder } from 'sani
 import Iframe from 'sanity-plugin-iframe-pane';
 import { SanityDocument } from 'sanity';
 
+const PREVIEW_PATH = 'api/preview';
+
+const siteUrl =
+  process.env.NODE_ENV === 'development'
+    ? `http://localhost:3000/${PREVIEW_PATH}`
+    : process.env.NEXT_PUBLIC_SANITY_DATASET === 'production'
+    ? `https://arsenal-fc-project-348a.vercel.app/${PREVIEW_PATH}` //TODO: When page is deployed and connected to domain this should be the live domain-name
+    : `https://arsenal-fc-project-348a.vercel.app//${PREVIEW_PATH}`;
+
 
 const getPreviewUrl = (doc: SanityDocument) => {
-
-  if (doc._type === 'home') {
-    return `${process.env.NEXT_PUBLIC_SITE_URL}`
-  }
-
-  if (doc._type === 'about') {
-    return `${process.env.NEXT_PUBLIC_SITE_URL}/about`
-  }
-
-  if (doc._type === 'products') {
-    return `${process.env.NEXT_PUBLIC_SITE_URL}/products`
-  }
-
-  
+  if (!doc.accessibleSlug?.current) return `${siteUrl}?id=${doc._id}`;
+  console.log(doc.accessibleSlug?.current)
   console.log(doc)
+
+  return `${siteUrl}?slug=${doc?.slugPrefix ?? ''}${doc.accessibleSlug?.current}&id=${doc._id}`;
 };
 
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, { schemaType }) => {

@@ -31,6 +31,8 @@ export default async function AboutPage() {
   if (preview && preview.token) {
     return (
       <PreviewProvider token={preview.token}>
+        <HeroBanner />
+      <ProductBanner />
         <AboutPreview pageData={pageData} />
       </PreviewProvider>
     );
