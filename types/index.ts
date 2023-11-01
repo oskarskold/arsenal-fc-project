@@ -63,6 +63,14 @@ export type ProductType = {
   quantity: number;
 };
 
+export interface Route {
+  slug: Slug;
+}
+
+export interface Slug {
+  current: string | undefined;
+}
+
 export interface Page extends SanityDocument {
   title?: string;
   description?: string;

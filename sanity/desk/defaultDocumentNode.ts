@@ -1,6 +1,17 @@
 import { DefaultDocumentNodeResolver, StructureBuilder, ViewBuilder } from 'sanity/desk';
 import Iframe from 'sanity-plugin-iframe-pane';
-import { SanityDocument } from 'sanity';
+
+interface AccessibleSlug {
+  current?: string;
+}
+
+interface SanityDocument {
+  _id: string;
+  accessibleSlug?: AccessibleSlug;
+  slugPrefix?: string; // Add this if it is required
+  // Add any other required properties here
+}
+
 
 const PREVIEW_PATH = 'api/preview';
 
@@ -12,7 +23,7 @@ const siteUrl =
     : `https://arsenal-fc-project-348a.vercel.app//${PREVIEW_PATH}`;
 
 
-const getPreviewUrl = (doc: SanityDocument) => {
+const getPreviewUrl = (doc: SanityDocument ) => {
   if (!doc.accessibleSlug?.current) return `${siteUrl}?id=${doc._id}`;
   console.log(doc.accessibleSlug?.current)
   console.log(doc)
