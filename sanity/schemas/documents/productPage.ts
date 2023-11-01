@@ -3,7 +3,7 @@ import fields from '../common/fields';
 import fieldsets from '../common/fieldsets';
 
 export default {
-  name: 'productPage',
+  name: 'products',
   type: 'document',
   title: 'Product Page',
   fieldsets: [fieldsets.metadata],

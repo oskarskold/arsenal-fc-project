@@ -3,7 +3,7 @@ import fields from '../common/fields';
 import fieldsets from '../common/fieldsets';
 
 export default {
-  name: 'homePage',
+  name: 'home',
   type: 'document',
   title: 'Home Page',
   fieldsets: [fieldsets.metadata],

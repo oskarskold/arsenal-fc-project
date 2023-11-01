@@ -17,8 +17,6 @@ export const metadata: Metadata = {
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const config = await getCachedClient(undefined)(siteConfigQuery);
-  console.log(config);
-
   return (
     <>
       <ShoppingCartProvider>
