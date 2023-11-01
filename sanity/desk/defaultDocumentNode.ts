@@ -20,7 +20,7 @@ const siteUrl =
     ? `http://localhost:3000/${PREVIEW_PATH}`
     : process.env.NEXT_PUBLIC_SANITY_DATASET === 'production'
     ? `https://arsenal-fc-project-348a.vercel.app/${PREVIEW_PATH}` //TODO: When page is deployed and connected to domain this should be the live domain-name
-    : `https://arsenal-fc-project-348a.vercel.app//${PREVIEW_PATH}`;
+    : `https://arsenal-fc-project-348a.vercel.app/${PREVIEW_PATH}`;
 
 
 const getPreviewUrl = (doc: SanityDocument ) => {
