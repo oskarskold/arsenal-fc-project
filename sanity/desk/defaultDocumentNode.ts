@@ -37,7 +37,7 @@ const siteUrlProduct =
 
 
     const getPreviewUrl = (doc: SanityDocument) => {
-      if (doc._type === 'home' || doc._type === 'sitePage' || doc._type === 'siteConfig') {
+      if (doc._type === 'home' || doc._type === 'sitePage' && doc.accessibleSlug?.current === 'home' || doc._type === 'siteConfig') {
         return `${siteUrl}?id=${doc._id}`;
       }
 

@@ -5,6 +5,7 @@ import { homePageQuery } from '@/sanity/lib/queries';
 import { getCachedClient } from '@/sanity/lib/getClient';
 import HomePreview from '@/components/Home/HomePreview';
 import Home from '@/components/Home/Home';
+import HomeBanner from '@/components/UI/HomeBanner';
 import HeroBanner from '@/components/UI/HeroBanner';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -29,6 +30,7 @@ export default async function HomePage() {
     return (
       <PreviewProvider token={preview.token}>
         <HeroBanner />
+        <HomeBanner pageData={pageData}/>
         <HomePreview pageData={pageData} />
       </PreviewProvider>
     );
@@ -37,6 +39,7 @@ export default async function HomePage() {
   return (
     <div>
      <HeroBanner />
+     <HomeBanner pageData={pageData}/>
      <Home pageData={pageData}/>
     </div>
   );

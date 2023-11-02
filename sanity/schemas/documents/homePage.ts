@@ -1,6 +1,7 @@
 import { metadataSlugFields } from '../objects/metadataFields';
 import fields from '../common/fields';
 import fieldsets from '../common/fieldsets';
+import banner from '../objects/banner';
 
 export default {
   name: 'home',
@@ -21,7 +22,9 @@ export default {
       of: [{ type: 'block' }],
     },
     ...metadataSlugFields,
+    banner,
   ],
+
   preview: {
     select: {
       title: 'title',

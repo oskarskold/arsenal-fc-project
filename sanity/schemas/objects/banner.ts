@@ -7,13 +7,13 @@ export default {
         name: 'title',
         type: 'string',
         title: 'Title',
-        validation: (Rule: any) => Rule.max(50), 
+        validation: (Rule: any) => Rule.max(30), 
       },
       {
         name: 'description',
         type: 'text',
         title: 'Description',
-        validation: (Rule: any) => Rule.max(200), 
+        validation: (Rule: any) => Rule.max(400), 
       },
       {
         name: 'image',
@@ -27,7 +27,7 @@ export default {
         name: 'subDescription',
         type: 'text',
         title: 'Sub Description',
-        validation: (Rule:any) => Rule.max(200), 
+        validation: (Rule:any) => Rule.max(400), 
       },
     ],
     preview: {

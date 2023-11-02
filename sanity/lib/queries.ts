@@ -35,6 +35,12 @@ export const homePageQuery = groq`*[_type == "homePage"][0] {
         accessibleSlug
       }
     }
+  },
+  "banner": *[_type == "home"][0].banner{ 
+    title,
+    description,
+    subDescription,
+    "imageUrl": image.asset->url, 
   }
 }`;
 
@@ -48,6 +54,12 @@ export const aboutPageQuery = groq`*[_type == "aboutPage"][0] {
         accessibleSlug
       }
     }
+  },
+  "banner": *[_type == "about"][0].banner{ 
+    title,
+    description,
+    subDescription,
+    "imageUrl": image.asset->url, 
   }
 }`;
 
@@ -62,11 +74,11 @@ export const productPageQuery = groq`*[_type == "productPage"][0] {
       }
     }
   },
-  "banner": *[_type == "products"][0].banner{  // Adjust "products" to the correct type of the product document
+  "banner": *[_type == "products"][0].banner{ 
     title,
     description,
     subDescription,
-    "imageUrl": image.asset->url,  // Assuming the image field in the banner is of type image
+    "imageUrl": image.asset->url, 
   }
 }`;
 
@@ -74,12 +86,6 @@ export const pageQuery = groq`*[_type == "sitePage" && accessibleSlug.current ==
   ...,
   content[] {
     ...,
-    cta {
-      ...,
-      route-> {
-        accessibleSlug
-      }
-    }
   }
 }`;
 
