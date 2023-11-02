@@ -8,7 +8,6 @@ import { useShoppingCart } from '../../context/cartContext';
 import { FaShoppingCart } from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
 
-
 type HeaderProps = {
   config: SiteConfig | undefined;
 };
@@ -41,12 +40,10 @@ const Header = ({ config }: HeaderProps) => {
                 key={item._key}
                 className="block text-black text-3xl text-center mx-8 hover:underline"
               >
-                {item.route?.accessibleSlug?.current
-                 && (
-                  <Link key={item._key} href={pathname === `/${item?.route?.accessibleSlug?.current}` ? pathname : `/${item?.route?.accessibleSlug?.current}`}>
-                  {item.title}
-                </Link>
-                
+                {item.route?.accessibleSlug?.current && (
+                  <Link key={item._key} href={item.route.accessibleSlug.current}>
+                    {item.title}
+                  </Link>
                 )}
               </div>
             ))}
@@ -92,7 +89,7 @@ const Header = ({ config }: HeaderProps) => {
             >
               {item.route?.accessibleSlug?.current && (
                 <Link href={item.route.accessibleSlug.current}>{item.title}</Link>
-                )}
+              )}
             </div>
           ))}
         </div>
