@@ -61,6 +61,12 @@ export const productPageQuery = groq`*[_type == "productPage"][0] {
         accessibleSlug
       }
     }
+  },
+  "banner": *[_type == "products"][0].banner{  // Adjust "products" to the correct type of the product document
+    title,
+    description,
+    subDescription,
+    "imageUrl": image.asset->url,  // Assuming the image field in the banner is of type image
   }
 }`;
 
