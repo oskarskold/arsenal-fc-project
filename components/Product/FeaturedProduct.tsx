@@ -30,7 +30,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ featuredProducts }) =
   };
 
   return (
-    <div className="md:flex flex-col items-center my-20 hidden">
+    <div className="md:flex flex-col items-center my-22 hidden">
       <h1 className="text-4xl font-bold">Featured Products</h1>
       <div className="flex justify-center items-center mt-10">
         <Slider {...settings}>
