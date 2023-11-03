@@ -40,11 +40,10 @@ const siteUrlProduct =
       if (
         doc._type === 'home' ||
         (doc._type === 'sitePage' && doc.accessibleSlug?.current === 'home') ||
-        doc._type === 'siteConfig'
+        doc._type === 'siteConfig' || doc._type === 'heroBanner'
       ) {
         return `${siteUrl}?id=${doc._id}`;
       }
-
       if (!doc.slug?.current) {
         return  `${siteUrl}?slug=${doc?.slugPrefix ?? ''}${doc.accessibleSlug?.current}&id=${doc._id}`;
       }
@@ -127,6 +126,16 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, { schemaType
           })
           .title('Preview'),
         ]);
+        case `heroBanner`:
+          return S.document().views([
+            S.view.form(),
+            S.view
+            .component(Iframe)
+            .options({
+              url: (doc: SanityDocument) => getPreviewUrl(doc),
+            })
+            .title('Preview'),
+          ]);
       
     default:
       return S.document().views([S.view.form()]);

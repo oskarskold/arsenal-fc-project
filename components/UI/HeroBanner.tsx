@@ -11,7 +11,6 @@ type Props = {
 
 const HeroBanner = ({ pageData }: Props) => {
   const [data] = useLiveQuery(pageData, productPageQuery);
-  console.log(pageData?.heroBanner?.imageUrl)
   return (
     <div className="bg-center bg-cover"  style={{
       backgroundImage: `url(${pageData?.heroBanner?.imageUrl ?? '/emirates-stadium-arsenal.webp'})`,
