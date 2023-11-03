@@ -9,7 +9,6 @@ type Props = {
 
 const ProductBanner = ({ pageData }: Props) => {
   const [data] = useLiveQuery(pageData, productPageQuery);
-  console.log(pageData?.banner.title);
   return (
  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12 md:my-24 mx-12">
     <div className="flex flex-col items-center  justify-center mx-14 ">
