@@ -31,7 +31,7 @@ export default async function AboutPage() {
   if (preview && preview.token) {
     return (
       <PreviewProvider token={preview.token}>
-        <HeroBanner />
+        <HeroBanner pageData={pageData} />
         <AboutBanner pageData={pageData} />
         <AboutPreview pageData={pageData} />
       </PreviewProvider>
@@ -40,7 +40,7 @@ export default async function AboutPage() {
 
   return (
     <div>
-     <HeroBanner />
+     <HeroBanner pageData={pageData} />
       <AboutBanner pageData={pageData} />
      <About pageData={pageData}/>
     </div>

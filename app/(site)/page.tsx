@@ -29,7 +29,7 @@ export default async function HomePage() {
   if (preview && preview.token) {
     return (
       <PreviewProvider token={preview.token}>
-        <HeroBanner />
+        <HeroBanner pageData={pageData}/>
         <HomeBanner pageData={pageData}/>
         <HomePreview pageData={pageData} />
       </PreviewProvider>
@@ -38,7 +38,7 @@ export default async function HomePage() {
 
   return (
     <div>
-     <HeroBanner />
+     <HeroBanner pageData={pageData}/>
      <HomeBanner pageData={pageData}/>
      <Home pageData={pageData}/>
     </div>

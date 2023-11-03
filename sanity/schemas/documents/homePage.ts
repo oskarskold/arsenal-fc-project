@@ -23,6 +23,12 @@ export default {
     },
     ...metadataSlugFields,
     banner,
+    {
+      name: 'heroBanner',
+      title: 'Hero Banner',
+      type: 'reference',
+      to: [{ type: 'heroBanner' }], // Replace with your other document's type
+    },
   ],
 
   preview: {

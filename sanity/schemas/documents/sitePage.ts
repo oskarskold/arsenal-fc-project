@@ -20,6 +20,12 @@ export default {
       type: 'array',
       of: [{ type: 'block' }],
     },
+    {
+      name: 'heroBanner',
+      title: 'Hero Banner',
+      type: 'reference',
+      to: [{ type: 'heroBanner' }], // Replace with your other document's type
+    },
     ...metadataSlugFields,
   ],
   preview: {

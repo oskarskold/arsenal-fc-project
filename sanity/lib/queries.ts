@@ -41,6 +41,24 @@ export const homePageQuery = groq`*[_type == "homePage"][0] {
     description,
     subDescription,
     "imageUrl": image.asset->url, 
+  },
+  "featuredProducts": *[_type == "product" && featured == true]{
+    _id,
+    _createdAt,
+    name,
+    "slug": slug.current,
+    "image": image.asset->url,
+    price,
+    details,
+    featured,
+    quantity,
+  },
+  "heroBanner": *[_type == "heroBanner"][0] {
+    _id,
+    title,
+    description,
+    subDescription,
+    "imageUrl": image.asset->url,
   }
 }`;
 
@@ -60,6 +78,13 @@ export const aboutPageQuery = groq`*[_type == "aboutPage"][0] {
     description,
     subDescription,
     "imageUrl": image.asset->url, 
+  },
+  "heroBanner": *[_type == "heroBanner"][0] {
+    _id,
+    title,
+    description,
+    subDescription,
+    "imageUrl": image.asset->url,
   }
 }`;
 
@@ -79,6 +104,13 @@ export const productPageQuery = groq`*[_type == "productPage"][0] {
     description,
     subDescription,
     "imageUrl": image.asset->url, 
+  },
+  "heroBanner": *[_type == "heroBanner"][0] {
+    _id,
+    title,
+    description,
+    subDescription,
+    "imageUrl": image.asset->url,
   }
 }`;
 
