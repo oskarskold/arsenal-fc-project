@@ -1,7 +1,6 @@
 'use client';
 
 import { Page } from '@/types';
-import { PortableText } from '@portabletext/react';
 import { useLiveQuery } from '@sanity/preview-kit';
 import { aboutPageQuery } from '@/sanity/lib/queries';
 import About from './About';
@@ -14,7 +13,7 @@ const AboutPreview = ({ pageData }: Props) => {
   const [data] = useLiveQuery(pageData, aboutPageQuery);
 
   return (
-      <About pageData={pageData}/>
+      <About pageData={data}/>
   );
 };
 
