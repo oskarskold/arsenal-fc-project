@@ -56,29 +56,6 @@ const Product: React.FC<ProductProps> = ({ params }) => {
               2,
             )}`}</span>
           </div>
-          <div className="flex items-center">
-            <p className="text-gray-600 mr-4">Quantity: {getItemQuantity(product._id)}</p>
-
-            <button
-              onClick={() => increaseItemQuantity(product._id)}
-              className="bg-green-500 hover:bg-green-600 text-white rounded mr-2 px-3 py-1 md:px-4 md:py-1 lg:px-4 lg:py-1"
-            >
-              <span className="text-lg font-bold">+</span>
-            </button>
-            <button
-              onClick={() => decreaseQuantity(product._id)}
-              className="bg-red-500 hover:bg-red-600 text-white rounded mr-2 px-3 py-1 md:px-4 md:py-1 lg:px-4 lg:py-1"
-            >
-              <span className="text-lg font-bold">-</span>
-            </button>
-            <button
-              onClick={() => removeFromCart(product._id)}
-              className="bg-gray-500 hover:bg-gray-600 text-white py-1 px-3 rounded md:py-1 md:px-4 lg:py-1 lg:px-4"
-            >
-              <span className="text-lg font-bold">Remove</span>
-            </button>
-          </div>
-
           <button
             onClick={() => addToCart(product)}
             className="mt-6 md:mt-14 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 md:mr-28 rounded"
