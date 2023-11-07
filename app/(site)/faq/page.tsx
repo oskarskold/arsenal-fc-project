@@ -9,7 +9,6 @@ import Faq from '@/components/Faq/Faq';
 import HeroBanner from '@/components/UI/HeroBanner';
 import FaqBanner from '@/components/UI/FaqBanner';
 
-
 export async function generateMetadata(): Promise<Metadata> {
   const pageData = await getCachedClient(undefined)(faqPageQuery);
 
@@ -22,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function AboutPage() {
+export default async function FaqPage() {
   const preview = draftMode().isEnabled
     ? { token: process.env.NEXT_PUBLIC_SANITY_API_READ_TOKEN }
     : undefined;
@@ -40,12 +39,10 @@ export default async function AboutPage() {
 
   return (
     <div>
-     <HeroBanner pageData={pageData} />
+      <HeroBanner pageData={pageData} />
       <FaqBanner pageData={pageData} />
-     <Faq pageData={pageData}/>
+      <Faq pageData={pageData} />
     </div>
   );
 }
-
-
 

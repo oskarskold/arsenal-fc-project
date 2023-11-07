@@ -26,7 +26,7 @@ export async function getSiteConfig(): Promise<SiteConfig> {
 
 export async function getHomePage(): Promise<Page> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "homePage"][0] {
+    groq`*[_type == "home"][0] {
       ...,
       content[] {
         ...,
@@ -93,10 +93,31 @@ export async function getProductPage(): Promise<Page> {
     }`,
   );
 }
+export async function getFaqPage(): Promise<Page> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "faq"][0] {
+      ...,
+ 
+      "banner": *[_type == "faq"][0].banner{ 
+        title,
+        description,
+        subDescription,
+        "imageUrl": image.asset->url, 
+      },
+      "heroBanner": *[_type == "heroBanner"][0] {
+        _id,
+        title,
+        description,
+        subDescription,
+        "imageUrl": image.asset->url,
+      }
+    }`,
+  );
+}
 
 export async function getAboutPage(): Promise<Page> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "aboutPage"][0] {
+    groq`*[_type == "about"][0] {
       ...,
  
       "banner": *[_type == "about"][0].banner{ 

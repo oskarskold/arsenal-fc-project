@@ -3,14 +3,14 @@
 import React from "react";
 import { Page } from '@/types';
 import { useLiveQuery } from '@sanity/preview-kit';
-import { productPageQuery } from '@/sanity/lib/queries';
+import { heroBannerQuery } from '@/sanity/lib/queries';
 type Props = {
   pageData: Page | undefined;
 };
 
 
 const HeroBanner = ({ pageData }: Props) => {
-  const [data] = useLiveQuery(pageData, productPageQuery);
+  const [data] = useLiveQuery(pageData, heroBannerQuery);
   return (
     <div className="bg-center bg-cover"  style={{
       backgroundImage: `url(${pageData?.heroBanner?.imageUrl ?? '/emirates-stadium-arsenal.webp'})`,

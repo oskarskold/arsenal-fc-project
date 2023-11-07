@@ -25,7 +25,15 @@ export const productsTypesQuery = groq`*[_type == "product"]{
   quantity,
 }`;
 
-export const faqPageQuery = groq`*[_type == "faq"] {
+export const heroBannerQuery = groq`*[_type == "heroBanner"][0] {
+  _id,
+  title,
+  description,
+  subDescription,
+  "imageUrl": image.asset->url,
+}`;
+
+export const faqPageQuery = groq`*[_type == "faq"][0] {
   ...,
   content[] {
     ...,
@@ -36,6 +44,19 @@ export const faqPageQuery = groq`*[_type == "faq"] {
       }
     }
   },
+  "banner": *[_type == "faq"][0].banner{ 
+    title,
+    description,
+    subDescription,
+    "imageUrl": image.asset->url, 
+  },
+  "heroBanner": *[_type == "heroBanner"][0] {
+    _id,
+    title,
+    description,
+    subDescription,
+    "imageUrl": image.asset->url,
+  }
 }`;
 
 export const homePageQuery = groq`*[_type == "home"][0] {

@@ -7,7 +7,7 @@ type Props = {
   pageData: Page | undefined;
 };
 
-const ProductBanner = ({ pageData }: Props) => {
+const AboutBanner = ({ pageData }: Props) => {
   const [data] = useLiveQuery(pageData, aboutPageQuery);
   return (
 
@@ -27,4 +27,4 @@ const ProductBanner = ({ pageData }: Props) => {
   );
 };
 
-export default ProductBanner;
+export default AboutBanner;
