@@ -25,6 +25,32 @@ export const productsTypesQuery = groq`*[_type == "product"]{
   quantity,
 }`;
 
+export const faqPageQuery = groq`*[_type == "faq"][0] {
+  ...,
+  content[] {
+    ...,
+    cta {
+      ...,
+      route-> {
+        accessibleSlug
+      }
+    }
+  },
+  "banner": *[_type == "faq"][0].banner{ 
+    title,
+    description,
+    subDescription,
+    "imageUrl": image.asset->url, 
+  },
+  "heroBanner": *[_type == "heroBanner"][0] {
+    _id,
+    title,
+    description,
+    subDescription,
+    "imageUrl": image.asset->url,
+  }
+}`;
+
 export const homePageQuery = groq`*[_type == "home"][0] {
   ...,
   content[] {
