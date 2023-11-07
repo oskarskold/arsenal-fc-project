@@ -36,6 +36,30 @@ export async function getHomePage(): Promise<Page> {
             accessibleSlug
           }
         }
+      },
+      "banner": *[_type == "home"][0].banner{ 
+        title,
+        description,
+        subDescription,
+        "imageUrl": image.asset->url, 
+      },
+      "featuredProducts": *[_type == "product" && featured == true]{
+        _id,
+        _createdAt,
+        name,
+        "slug": slug.current,
+        "image": image.asset->url,
+        price,
+        details,
+        featured,
+        quantity,
+      },
+      "heroBanner": *[_type == "heroBanner"][0] {
+        _id,
+        title,
+        description,
+        subDescription,
+        "imageUrl": image.asset->url,
       }
     }`,
   );
@@ -52,6 +76,19 @@ export async function getProductPage(): Promise<Page> {
             accessibleSlug
           }
         }
+      },
+      "banner": *[_type == "products"][0].banner{ 
+        title,
+        description,
+        subDescription,
+        "imageUrl": image.asset->url, 
+      },
+      "heroBanner": *[_type == "heroBanner"][0] {
+        _id,
+        title,
+        description,
+        subDescription,
+        "imageUrl": image.asset->url,
       }
     }`,
   );
@@ -61,14 +98,19 @@ export async function getAboutPage(): Promise<Page> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "aboutPage"][0] {
       ...,
-      content[] {
-        ...,
-        cta {
-          ...,
-          route-> {
-            accessibleSlug
-          }
-        }
+ 
+      "banner": *[_type == "about"][0].banner{ 
+        title,
+        description,
+        subDescription,
+        "imageUrl": image.asset->url, 
+      },
+      "heroBanner": *[_type == "heroBanner"][0] {
+        _id,
+        title,
+        description,
+        subDescription,
+        "imageUrl": image.asset->url,
       }
     }`,
   );

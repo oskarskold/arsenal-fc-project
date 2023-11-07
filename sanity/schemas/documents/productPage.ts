@@ -4,7 +4,7 @@ import fieldsets from '../common/fieldsets';
 import banner from '../objects/banner';
 
 export default {
-  name: 'products',
+  name: 'productPage',
   type: 'document',
   title: 'Product Page',
   fieldsets: [fieldsets.metadata],

@@ -25,7 +25,7 @@ export const productsTypesQuery = groq`*[_type == "product"]{
   quantity,
 }`;
 
-export const homePageQuery = groq`*[_type == "homePage"][0] {
+export const homePageQuery = groq`*[_type == "home"][0] {
   ...,
   content[] {
     ...,
@@ -62,7 +62,7 @@ export const homePageQuery = groq`*[_type == "homePage"][0] {
   }
 }`;
 
-export const aboutPageQuery = groq`*[_type == "aboutPage"][0] {
+export const aboutPageQuery = groq`*[_type == "about"][0] {
   ...,
   content[] {
     ...,

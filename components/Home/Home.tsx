@@ -8,9 +8,6 @@ type Props = {
 };
 
 const Home = ({ pageData }: Props) => {
-
-  console.log('pageData', pageData?.title);
-
   return (
     <main className="my-4">
       <div className="container m-auto px-4">
