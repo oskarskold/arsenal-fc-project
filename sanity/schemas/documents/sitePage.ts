@@ -1,4 +1,3 @@
-import { metadataSlugFields } from '../objects/metadataFields';
 import fields from '../common/fields';
 import fieldsets from '../common/fieldsets';
 
