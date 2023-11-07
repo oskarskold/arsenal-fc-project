@@ -1,13 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
-import Layout from '@/app/(site)/layout';
 
 
 const canceled = () => {
-  return  <Layout>
+  return  <div>
   <h2>Canceled</h2>
   <Link href="/">Return Home</Link>
-</Layout>
+</div>
 };
 
 export default canceled;
