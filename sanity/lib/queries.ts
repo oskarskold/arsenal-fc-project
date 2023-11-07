@@ -88,7 +88,7 @@ export const aboutPageQuery = groq`*[_type == "about"][0] {
   }
 }`;
 
-export const productPageQuery = groq`*[_type == "productPage"][0] {
+export const productPageQuery = groq`*[_type == "products"][0] {
   ...,
   content[] {
     ...,
