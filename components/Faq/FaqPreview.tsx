@@ -6,7 +6,7 @@ import { faqPageQuery } from '@/sanity/lib/queries';
 import Faq from './Faq';
 
 type Props = {
-  pageData: Page | undefined;
+  pageData: Page[] | undefined;
 };
 
 const FaqPreview = ({ pageData }: Props) => {
